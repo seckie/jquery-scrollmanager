@@ -1,4 +1,4 @@
-# jQuery-scrollmanager
+# jquery-scrollmanager
 
 This is a jQuery plugin that provides some scroll controlling.
 
