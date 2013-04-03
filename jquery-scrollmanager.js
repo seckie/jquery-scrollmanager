@@ -1,5 +1,5 @@
 /**
- * $.scrollController
+ * $.scrollmanager
  * smooth scrolling and highlight some element with scrolling
  *
  * @author     Naoki Sekiguchi (http://likealunatic.jp)
@@ -11,13 +11,13 @@
 
 ;(function($, window, document, undefined) {
 
-$.fn.scrollController = function (options) {
+$.fn.scrollmanager = function (options) {
 	var opt = options || {};
 	opt.element = this;
-	this.data('scrollController', new ScrollController(opt));
+	this.data('scrollmanager', new Scrollmanager(opt));
 	return this;
 };
-function ScrollController() {
+function Scrollmanager() {
 	// extend default options
 	this.options = {};
 	$.extend(this.options, this.defaultOptions, arguments[0]);
@@ -27,7 +27,7 @@ function ScrollController() {
 	// initialize
 	this._create();
 }
-ScrollController.prototype = {
+Scrollmanager.prototype = {
 	defaultOptions: {
 		element: {},
 		delay: 500,
@@ -51,7 +51,7 @@ ScrollController.prototype = {
 			$.data(target, 'trigger', anchor);
 		});
 
-		this.element.on("click.scrollController", function(e) {
+		this.element.on("click.scrollmanager", function(e) {
 			var target = $.data(this, 'target');
 			if (!target) { return; }
 			var x = Math.floor($(target).offset().left);
@@ -83,7 +83,7 @@ ScrollController.prototype = {
 			e.preventDefault();
 		});
 
-		$(window).on('scroll.scrollController', function () {
+		$(window).on('scroll.scrollmanager', function () {
 			clearTimeout(timer);
 			timer = setTimeout(function () {
 				// if 'preventHighLight' flag is enabled, do nothing

@@ -2,17 +2,17 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>jQuery.scrollController demo (horizontal scroll only)</title>
+<title>jquery-scrollmanager demo (horizontal scroll only)</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script>
 if (!window.jQuery) {
 	document.write('<script src="jquery-1.7.1.min.js"><' + '/script>');
 }
 </script>
-<script src="jquery.scrollController.js"></script>
+<script src="jquery-scrollmanager.js"></script>
 <script>
 $(function() {
-	$('a[href^="#"]').scrollController({
+	$('a[href^="#"]').scrollmanager({
 		delay: 500,
 		className: 'on',
 		easing: 'swing',
@@ -61,7 +61,7 @@ p {
 <body>
 
 <div class="container">
-<h1>jQuery.scrollController demo (horizontal scroll only)</h1>
+<h1>jquery-scrollmanager demo (horizontal scroll only)</h1>
 
 <div class="side">
 <nav>

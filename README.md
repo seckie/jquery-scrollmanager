@@ -1,4 +1,4 @@
-# jQuery.scrollController
+# jQuery-scrollmanager
 
 This is a jQuery plugin that provides some scroll controlling.
 
@@ -11,19 +11,19 @@ This is a jQuery plugin that provides some scroll controlling.
 
 ## Demos
 
-- http://likealunatic.jp/demo/jquery-scrollController/
-- http://likealunatic.jp/demo/jquery-scrollController/index_vt.html
-- http://likealunatic.jp/demo/jquery-scrollController/index_hr.html
+- http://likealunatic.jp/demo/jquery-scrollmanager/
+- http://likealunatic.jp/demo/jquery-scrollmanager/index_vt.html
+- http://likealunatic.jp/demo/jquery-scrollmanager/index_hr.html
 
 ## Usage
 
-Load this script after jquery.js,  and call "scrollController" method when document is ready.
+Load this script after jquery.js,  and call "scrollmanager" method when document is ready.
 
 	<script src="/js/jquery.js"></script>
-	<script src="/js/jquery.scrollController.js"></script>
+	<script src="/js/jquery.scrollmanager.js"></script>
 	<script>
 	$(function() {
-		$('a[href^="#"]').scrollController({
+		$('a[href^="#"]').scrollmanager({
 			// some options...
 			horizontal: false
 		});
@@ -50,12 +50,12 @@ Attribute selector (like this:'a[href^="#"]') is convenient to select such "A" e
 <tr>
 <td>vertical</td>
 <td>true</td>
-<td>Whether controlling vertical scrolling or not. If you set this option to false, it'll be like this <a href="http://likealunatic.jp/demo/jquery-scrollController/index_hr.html">demo</a>.</td></td>
+<td>Whether controlling vertical scrolling or not. If you set this option to false, it'll be like this <a href="http://likealunatic.jp/demo/jquery-scrollmanager/index_hr.html">demo</a>.</td></td>
 </tr>
 <tr>
 <td>horizontal</td>
 <td>true</td>
-<td>Whether controlling horizontal scrolling or not. If you set this option to false, it'll be like this <a href="http://likealunatic.jp/demo/jquery-scrollController/index_vt.html">demo</a>.</td>
+<td>Whether controlling horizontal scrolling or not. If you set this option to false, it'll be like this <a href="http://likealunatic.jp/demo/jquery-scrollmanager/index_vt.html">demo</a>.</td>
 </tr>
 <tr>
 <td>className</td>
