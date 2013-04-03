@@ -61,7 +61,7 @@ Scrollmanager.prototype = {
 			if (options.vertical) { style.scrollTop = y; }
 			// to prevent highlight
 			$.data(window, 'preventHighlight', 1);
-			$('html, body').animate(style, {
+			self.$body.animate(style, {
 				easing: options.easing,
 				duration: options.duration,
 				complete: function () {
@@ -93,7 +93,19 @@ Scrollmanager.prototype = {
 		});
 
 		// initialize
-		self._detectScroll();
+		this._detectScrollBody();
+		this._detectScroll();
+	},
+	_detectScrollBody: function () {
+		var $win = $(window);
+		var currentScrollTop = $win.scrollTop();
+		$win.scrollTop(currentScrollTop + 1);
+		if ($('html').scrollTop() > 0) {
+			this.$body = $('html');
+		} else if ($('body').scrollTop() > 0) {
+			this.$body = $('body');
+		}
+		$win.scrollTop(currentScrollTop);
 	},
 	_getTarget: function (linkElement) {
 		var href = $(linkElement).attr('href');
