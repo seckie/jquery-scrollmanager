@@ -18,7 +18,11 @@ $(function() {
 		easing: 'swing',
 		duration: 750,
 		vertical: true,
-		horizontal: true
+		horizontal: true,
+		complete: function (target, trigger) {
+			console.log('target: ', target);
+			console.log('trigger: ', trigger);
+		}
 	});
 });
 </script>

@@ -35,7 +35,8 @@ Scrollmanager.prototype = {
 		easing: 'swing',
 		duration: 750,
 		vertical: true,
-		horizontal: true
+		horizontal: true,
+		complete: function (target, trigger) { }
 	},
 	_create: function () {
 		var self = this;
@@ -52,7 +53,8 @@ Scrollmanager.prototype = {
 		});
 
 		this.element.on("click.scrollmanager", function(e) {
-			var target = $.data(this, 'target');
+			var trigger = e.currentTarget;
+			var target = $.data(trigger, 'target');
 			if (!target) { return; }
 			var x = Math.floor($(target).offset().left);
 			var y = Math.floor($(target).offset().top);
@@ -64,12 +66,19 @@ Scrollmanager.prototype = {
 			self.$body.animate(style, {
 				easing: options.easing,
 				duration: options.duration,
-				complete: function () {
-					// clear preventing highlight with some delay
-					setTimeout(function () {
-						$.removeData(window, 'preventHighlight');
-					}, options.delay + 250);
-				}
+				complete: (function () {
+					var _target = target;
+					var _trigger = trigger;
+					return function () {
+						options.complete(_target, _trigger);
+						_target = null;
+						_trigger = null;
+						// clear preventing highlight with some delay
+						setTimeout(function () {
+							$.removeData(window, 'preventHighlight');
+						}, options.delay + 250);
+					}
+				})()
 			});
 			// controll focus & blur
 			var clickedAnchor = this;
@@ -119,6 +128,7 @@ Scrollmanager.prototype = {
 	},
 	_detectScroll: function () {
 		var self = this;
+		var options = this.options;
 		// get document scroll top position
 		var scrollX = document.documentElement.scrollLeft || document.body.scrollLeft;
 		var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
@@ -134,14 +144,14 @@ Scrollmanager.prototype = {
 			if (!target) { return; }
 			var $target = $(target);
 			var judgeX, judgeY;
-			if (self.options.horizontal) {
+			if (options.horizontal) {
 				judgeX = (x >= $target.offset().left &&
 					x < ($target.offset().left + $target.outerWidth()));
 			} else {
 				// if no "horizontal" option, go threw X-axis judge
 				judgeX = true;
 			}
-			if (self.options.vertical) {
+			if (options.vertical) {
 				judgeY = (y >= $target.offset().top &&
 					y < ($target.offset().top + $target.outerHeight()));
 			} else {
@@ -150,6 +160,7 @@ Scrollmanager.prototype = {
 			}
 			if (judgeX && judgeY) {
 				self._focus(target, trigger);
+				options.complete(target, trigger);
 			} else {
 				self._blur(target, trigger)
 			}
