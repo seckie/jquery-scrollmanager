@@ -77,6 +77,11 @@ Attribute selector (like this:'a[href^="#"]') is convenient to select such "A" e
 <td>500</td>
 <td>Delay of highlighting after scrolling. It's unit is millisecond.</td>
 </tr>
+<tr>
+<td>complete</td>
+<td>function (target, trigger) { }</td>
+<td>Callback function that will be called when highlighting. Two arguments, target element and trigger element will be passed.</td>
+</tr>
 </tbody>
 </table>
 
