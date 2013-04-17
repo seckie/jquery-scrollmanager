@@ -55,7 +55,7 @@ Scrollmanager.prototype = {
 		this.element.on("click.scrollmanager", function(e) {
 			var trigger = e.currentTarget;
 			var target = $.data(trigger, 'target');
-			if (!target) { return; }
+			if (!target || !self.$body) { return true; } // do nothing
 			var x = Math.floor($(target).offset().left);
 			var y = Math.floor($(target).offset().top);
 			var style = {};
@@ -113,6 +113,8 @@ Scrollmanager.prototype = {
 			this.$body = $('html');
 		} else if ($('body').scrollTop() > 0) {
 			this.$body = $('body');
+		} else {
+			this.$body = $('html, body');
 		}
 		$win.scrollTop(currentScrollTop);
 	},
