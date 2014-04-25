@@ -3,13 +3,11 @@
  * smooth scrolling and highlight some element with scrolling
  *
  * @author     Naoki Sekiguchi (http://likealunatic.jp)
- * @copyright  Naoki Sekiguchi (http://likealunatic.jp)
  * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
- * @version    Release: 1.0
  * @since      2011-12-17
  */
 
-;(function($, window, document, undefined) {
+(function($, window, document, undefined) {
 
 $.fn.scrollmanager = function (options) {
 	var opt = options || {};
