@@ -36,6 +36,8 @@ Scrollmanager.prototype = {
 		duration: 750,
 		vertical: true,
 		horizontal: true,
+		offsetX: 0,
+		offsetY: 0,
 		complete: function (target, trigger) { }
 	},
 	_create: function () {
@@ -56,8 +58,8 @@ Scrollmanager.prototype = {
 			var trigger = e.currentTarget;
 			var target = $.data(trigger, 'target');
 			if (!target || !self.$body) { return true; } // do nothing
-			var x = Math.floor($(target).offset().left);
-			var y = Math.floor($(target).offset().top);
+			var x = Math.floor($(target).offset().left) + options.offsetX;
+			var y = Math.floor($(target).offset().top) + options.offsetY;
 			var style = {};
 			if (options.horizontal) { style.scrollLeft = x; }
 			if (options.vertical) { style.scrollTop = y; }
