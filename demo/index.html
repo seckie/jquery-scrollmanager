@@ -2,15 +2,15 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>jquery-scrollmanager demo (vertical scroll only)</title>
+<title>jquery-scrollmanager demo</title>
 <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script>
 if (!window.jQuery) {
-	document.write('<script src="jquery-1.7.1.min.js"><' + '/script>');
+	document.write('<script src="./jquery-1.7.1.min.js"><' + '/script>');
 }
 </script>
-<script src="jquery-scrollmanager.js"></script>
+<script src="../dist/jquery-scrollmanager.js"></script>
 <script>
 $(function() {
 	$('a[href^="#"]').scrollmanager({
@@ -19,15 +19,18 @@ $(function() {
 		easing: 'swing',
 		duration: 750,
 		vertical: true,
-		horizontal: false,
-		offsetY: -100
+		horizontal: true,
+		complete: function (target, trigger) {
+			console.log('target: ', target);
+			console.log('trigger: ', trigger);
+		}
 	});
 });
 </script>
 <style>
 .container {
 	position: relative;
-	width: 800px;
+	width: 2600px;
 	margin: 0 auto;
 }
 .side {
@@ -37,8 +40,17 @@ $(function() {
 	background-color: #fff;
 }
 .main1 {
-	float: right;
-	width: 600px;
+	float: left;
+	width: 800px;
+	margin: 0 0 0 200px;
+}
+.main2 {
+	float: left;
+	width: 800px;
+}
+.main3 {
+	float: left;
+	width: 800px;
 }
 .on {
 	background-color: #ff9999;
@@ -54,7 +66,7 @@ p {
 <body>
 
 <div class="container">
-<h1>jquery-scrollmanager demo (vertical scroll only)</h1>
+<h1>jquery-scrollmanager demo</h1>
 
 <div class="side">
 <nav>
@@ -62,6 +74,12 @@ p {
 <li><a href="#section1-1">section1-1</a></li>
 <li><a href="#section1-2">section1-2</a></li>
 <li><a href="#section1-3">section1-3</a></li>
+<li><a href="#section2-1">section2-1</a></li>
+<li><a href="#section2-2">section2-2</a></li>
+<li><a href="#section2-3">section2-3</a></li>
+<li><a href="#section3-1">section3-1</a></li>
+<li><a href="#section3-2">section3-2</a></li>
+<li><a href="#section3-3">section3-3</a></li>
 </ul>
 </nav>
 <!--/.side--></div>
@@ -73,21 +91,9 @@ p {
 		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
 		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
 		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
-		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
-		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
-		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
-		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
-		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
-		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
 	<!--/#section1-1--></section>
 	<section id="section1-2">
 		<h2>Section1-2</h2>
-		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
-		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
-		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
-		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
-		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
-		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
 		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
 		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
 		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
@@ -99,14 +105,54 @@ p {
 		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
 		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
 		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
-		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
-		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
-		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
-		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
-		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
-		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
 	<!--/#section1-3--></section>
 <!--/.main1--></div>
+<div class="main2">
+	<section id="section2-1">
+		<h2>Section2-1</h2>
+		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+	<!--/#section2-1--></section>
+	<section id="section2-2">
+		<h2>Section2-2</h2>
+		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+	<!--/#section2-2--></section>
+	<section id="section2-3">
+		<h2>Section2-3</h2>
+		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+	<!--/#section2-3--></section>
+<!--/.main1--></div>
+<div class="main3">
+	<section id="section3-1">
+		<h2>Section3-1</h2>
+		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+	<!--/#section3-1--></section>
+	<section id="section3-2">
+		<h2>Section3-2</h2>
+		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+	<!--/#section3-2--></section>
+	<section id="section3-3">
+		<h2>Section3-3</h2>
+		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+		<p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+	<!--/#section3-3--></section>
+<!--/.main3--></div>
 
 <!--/.container--></div>
 
